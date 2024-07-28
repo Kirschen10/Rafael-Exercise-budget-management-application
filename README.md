@@ -3,26 +3,34 @@
 
 ## Installation
 
-1. **Clone the repository:**
+1. **Download the project from GitHub:**
+   - Go to the GitHub page at https://github.com/Kirschen10/Rafael-Exercise-budget-management-application.
+   - Click the green "Code" button.
+   - Select "Download ZIP" and save the file to your computer.
+   - Extract the ZIP file you downloaded to a folder on your computer.
 
-   git clone https://github.com/Kirschen10/Rafael-Exercise-budget-management-application
+2. **Open the folder in VS Code:**
+   - Open VS Code.
+   - Select "File" from the top menu, then choose "Open Folder".
+   - Navigate to the folder you extracted and select it to open.
 
-   cd <repository_directory>  ---> Change to your folder destination
-
-
-2. **Install dependencies:**
-
+3. **Install dependencies:**
+### `npm install`
+   ```sh
    npm install
-
+   ```
 
 ## Running the Project
 
 ### `npm start`
+   ```sh
+   npm start
+   ```
 
 This command runs both the client and server side of the application in development mode.
-Open [http://localhost:3000](http://localhost:3000) to view the client side in your browser.
-The server side should be available at [http://localhost:3001](http://localhost:3001).
-The page will reload when you make changes.You may also see any lint errors in the console.
+Open http://localhost:3000 to view the client side in your browser.
+The server side should be available at http://localhost:3001.
+The page will reload when you make changes. You may also see any lint errors in the console.
 
 ## Troubleshooting
 
@@ -31,21 +39,20 @@ If the project does not run as expected, please ensure the following:
 1. **Environment Variables:**
    - Make sure your system's PATH environment variable includes the path to Node.js and MySQL binaries. 
      For example:
-		 - `C:\Program Files\nodejs\`
-		 - `C:\Program Files\MySQL\MySQL Server 8.0\bin`
-    * Instructions on how to do this at the bottom of the page
+       - `C:\Program Files\nodejs\`
+       - `C:\Program Files\MySQL\MySQL Server 8.0\bin`
+   - Instructions on how to do this are at the bottom of the page.
 
 2. **Node.js Version:**
    - The project was developed using Node.js version 20.15.1. 
    Please ensure you have this version installed. You can check your Node.js version by running:
- 
+     ```sh
      node -v
-
+     ```
 
 3. **MySQL Configuration:**
    - Ensure MySQL Server is installed and running.
-   - Verify your MySQL credentials in the project's configuration files (e.g., `.env` or `config.js`).
-
+   - Verify your MySQL credentials in the project's configuration files.
 
 # Adding PATH to Environment Variables
 
@@ -76,5 +83,3 @@ If the project does not run as expected, please ensure the following:
      echo %PATH%
      ```
    - Ensure that the paths you added appear in the list of paths.
-
-
