@@ -56,7 +56,7 @@ If the project does not run as expected, please ensure the following:
 
 ## Adding PATH to Environment Variables
 
-**Steps to Add Node.js and MySQL to the PATH Variable on Windows**
+**Steps to Add Node.js and MySQL to the PATH Variable on Windows -**
 
 1. **Open Advanced System Settings:**
    - Click on `Start` and type `Environment Variables`, then select `Edit the system environment variables`.
