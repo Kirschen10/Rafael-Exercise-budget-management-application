@@ -1,0 +1,102 @@
+.filter-sort-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-bottom: 10px;
+    color: #b0b0b0;
+    font-size: 1.2rem;
+    position: relative; /* Add position relative to the parent container */
+  }
+  
+  .filter-sort-controls .actions {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .filter-sort-controls .filter-button, .filter-sort-controls .sort-button, .filter-sort-controls .export-button {
+    background-color: transparent;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0 5px;
+    font-size: 2.5rem;
+    color: grey;
+  }
+  
+  .filter-sort-controls .filter-button:hover, .filter-sort-controls .sort-button:hover, .filter-sort-controls .export-button:hover {
+    opacity: 0.5;
+  }
+  
+  .filter-sort-controls .filter-button svg, .filter-sort-controls .sort-button svg, .filter-sort-controls .export-button svg {
+    font-size: 2rem;
+    transition: opacity 0.3s ease;
+  }
+  
+  .filter-sort-controls .filters, .filter-sort-controls .sort-options {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    position: absolute;
+    top: 40px; /* Position the options below the button */
+    right: 0;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    padding: 10px;
+  }
+  
+  .filter-sort-controls .filters input, .filter-sort-controls .sort-options select {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+    width: 150px; /* Ensuring the width is consistent */
+    font-size: 1.2rem;
+  }
+  
+  .sort-options select {
+    width: 150px; /* Ensuring the width is consistent */
+  }
+  
+  .export-options {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 40px; /* Position the export options below the button */
+    right: 0;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    padding: 10px;
+  }
+  
+  .export-options button {
+    background-color: gray;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    margin: 5px 0;
+    width: 200px; /* Ensuring the width is consistent */
+  }
+  
+  .export-options button:hover {
+    background-color: #ccc;
+  }
+  
+  .export-options .cancel-button {
+    background-color: #f44336;
+  }
+  
+  .export-options .cancel-button:hover {
+    background-color: #d32f2f;
+  }
+  

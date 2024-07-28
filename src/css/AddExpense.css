@@ -1,0 +1,102 @@
+.add-details-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.add-details-container {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  text-align: left;
+  max-width: 500px;
+  width: 100%;
+  position: relative;
+}
+
+.add-expense-container {
+  max-width: 600px;
+}
+
+.add-expense h3 {
+  font-size: 1.5rem;
+  color: #004d8e;
+  margin-bottom: 10px;
+}
+
+.add-expense form {
+  display: flex;
+  flex-direction: column;
+}
+
+.add-form-group {
+  margin-bottom: 15px;
+}
+
+.add-form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  font-size: 1rem;
+  color: #333;
+}
+
+.add-form-group input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+.add-submit-button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+  width: 100%;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.add-submit-button:hover {
+  background-color: #45a049;
+}
+
+.add-error-message {
+  color: red;
+  font-size: 0.8rem;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  text-align: left;
+  position: relative;
+  top: -5px;
+}
+
+/* סגנון לכפתור סגירה */
+.add-close-button {
+  position: absolute;
+  top: 10px;
+  left: 10px; /* הזזה שמאלה */
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #333;
+}
+
+.add-details-overlay .add-close-button:hover {
+  color: #000;
+}
