@@ -9,23 +9,27 @@ import TableScreen from './TableScreen';
 import Details from './components/Details';
 import EditDetails from './components/EditDetails';
 import AddNewType from './components/AddNewType';
+import LogIn from './LogIn';
 
 function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const username = 'Liad'; // Replace with dynamic username if needed
-    dispatch(fetchExpenses(username));
-    dispatch(fetchBudget(username));
-    dispatch(fetchSumExpenses(username));
-    dispatch(fetchSumIncomes(username));
-    dispatch(fetchPersonalDetails(username));
+    const storedUsername = localStorage.getItem('username');
+    if (storedUsername) {
+      dispatch(fetchPersonalDetails(storedUsername));
+      dispatch(fetchExpenses(storedUsername));
+      dispatch(fetchBudget(storedUsername));
+      dispatch(fetchSumExpenses(storedUsername));
+      dispatch(fetchSumIncomes(storedUsername));
+    }
   }, [dispatch]);
 
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<DashboardScreen />} />
+      <Route path="/" element={<LogIn />} />
+        <Route path="DashboardScreen" element={<DashboardScreen />} />
         <Route path="TableScreen/*" element={<TableScreen />}>
           <Route path=":type/:id" element={<Details />} />
           <Route path="edit/:type/:id" element={<EditDetails />} />

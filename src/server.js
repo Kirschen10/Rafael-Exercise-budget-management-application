@@ -223,7 +223,7 @@ app.put('/update_income', (req, res) => {
 
 
 
-////////////////////////////// GEMERAL /////////////////////////////////////////
+////////////////////////////// GENERAL /////////////////////////////////////////
 
 app.post('/personal_details', (req, res) => {
   const { username } = req.body;
@@ -268,6 +268,31 @@ app.post('/budget', (req, res) => {
   });
 });
 
+app.post('/login', (req, res) => {
+  const { username, password } = req.body;
+  const query = 'SELECT * FROM users WHERE username = ?';
+  db.query(query, [username], (err, results) => {
+    if (err) {
+      console.error('Error occurred during login:', err);
+      res.status(500).send({ message: 'An error occurred', error: err.message });
+      return;
+    }
+
+    if (results.length > 0) {
+      const user = results[0];
+      console.log('User found: ', user);
+
+      if (password === user.password) {
+        res.status(200).send({ message: 'Login successful' });
+      } else {
+        res.status(401).send({ message: 'Invalid password' });
+      }
+
+    } else {
+      res.status(401).send({ message: 'Invalid username' });
+    }
+  });
+});
 
 
 

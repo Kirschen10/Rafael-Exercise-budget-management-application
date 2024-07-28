@@ -40,6 +40,16 @@ const AddNewType = () => {
     navigate(-1); // Go back to the previous page
   };
 
+  if (!username) {
+    return <div className="loading">Please login to the site before you want to view the data...</div>; 
+  }
+
+  const storedUsername = localStorage.getItem('username');
+  if (!username || !storedUsername) {
+    console.log("Please login to the site before you want to view the data...");
+    navigate('/');
+  }
+
   return (
     <div className="add-details-overlay">
       <div className="add-details-container add-expense-container">

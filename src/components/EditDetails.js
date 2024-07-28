@@ -55,6 +55,12 @@ const EditDetails = () => {
     return <div>Item not found</div>;
   }
 
+  const storedUsername = localStorage.getItem('username');
+  if (!username || !storedUsername) {
+    console.log("Please login to the site before you want to view the data...");
+    navigate('/');
+  }
+
   return (
     <div className="details-overlay">
       <div className="details-container">

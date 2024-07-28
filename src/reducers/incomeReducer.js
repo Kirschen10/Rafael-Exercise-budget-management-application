@@ -15,6 +15,8 @@ const incomeReducer = (state = initialState, action) => {
           income.id === action.payload.id ? action.payload : income
         )
       };
+      case 'LOGOUT_USER':
+        return initialState;
     default:
       return state;
   }

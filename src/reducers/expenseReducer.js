@@ -16,6 +16,8 @@ const expenseReducer = (state = initialState, action) => {
           expense.id === action.payload.id ? action.payload : expense
         )
       };
+      case 'LOGOUT_USER':
+        return initialState;
     default:
       return state;
   }

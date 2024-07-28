@@ -3,6 +3,7 @@ const initialState = {
   firstName: '',
   lastName: '',
   loading: false, // Loading state
+  logIn: false,
 };
 
 const userReducer = (state = initialState, action) => {
@@ -18,12 +19,22 @@ const userReducer = (state = initialState, action) => {
         firstName: action.payload.firstName,
         lastName: action.payload.lastName,
         loading: false, // End loading
+        logIn: true,
       };
     case 'LOADING_USER_DATA':
       return {
         ...state,
         loading: true, // Start loading
       };
+      case 'LOGOUT_USER':
+        return {
+          ...state,
+          username: '',
+          firstName: '',
+          lastName: '',
+          loading: false,
+          logIn: false,
+        };
     default:
       return state;
   }

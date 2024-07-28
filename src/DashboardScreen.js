@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import './css/DashboardScreen.css';
@@ -13,6 +13,13 @@ const DashboardScreen = () => {
   const loading = useSelector(state => state.user.loading); // Loading state
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const storedUsername = localStorage.getItem('username');
+    if (!storedUsername) {
+      navigate('/');
+    }
+  }, [navigate]);
 
   // Calculate remaining balance and percentage
   const remainingBalance = budget ? budget + incomes - expenses : 0;
@@ -31,6 +38,12 @@ const DashboardScreen = () => {
 
   if (loading) {
     return <div className="loading">Loading...</div>; 
+  }
+
+  const storedUsername = localStorage.getItem('username');
+  if (!firstName || !storedUsername) {
+    console.log("Please login to the site before you want to view the data...");
+    navigate('/');
   }
 
   return (

@@ -27,6 +27,12 @@ const Details = () => {
 
   const formattedDate = new Date(item.date).toLocaleDateString();
 
+  const storedUsername = localStorage.getItem('username');
+  if (!storedUsername) {
+    console.log("Please login to the site before you want to view the data...");
+    navigate('/');
+  }
+
   return (
     <div className="details-overlay">
     <div className="details-container">

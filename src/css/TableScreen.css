@@ -113,8 +113,16 @@
   color: #004d8e;
 }
 
-.TableScreenPage .back-icon:hover {
+.TableScreenPage .back-icon:hover .logOut-icon:hover{
   opacity: 0.5;
+}
+
+.logOut-icon {
+  position: absolute;
+  right: 40px;
+  font-size: 1rem;
+  cursor: pointer;
+  color: #004d8e;
 }
 
 .TableScreenPage h3 {

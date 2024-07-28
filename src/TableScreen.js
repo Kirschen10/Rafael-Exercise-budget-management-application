@@ -11,6 +11,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import ArticleIcon from '@mui/icons-material/Article';
 import HomeIcon from '@mui/icons-material/Home';
 import { Tooltip } from 'react-tooltip';
+import LogoutIcon from '@mui/icons-material/Logout';
 
 /**
  * Main component for displaying and managing expenses and incomes.
@@ -104,6 +105,19 @@ const TableScreen = () => {
     }
   });
 
+  const handleLogout = () => {
+    // Perform logout actions here
+    localStorage.removeItem('username');
+    dispatch({ type: 'LOGOUT_USER' });
+    navigate('/');
+  };
+
+  const storedUsername = localStorage.getItem('username');
+  if (!username || !storedUsername) {
+    console.log("Please login to the site before you want to view the data...");
+    navigate('/');
+  }
+
   return (
     <div className="TableScreenPage">
       {/* Conditionally render the expense deletion popup */}
@@ -123,8 +137,17 @@ const TableScreen = () => {
 
       <div className="table-header">
         <h3>Overview of Expenses & Incomes</h3>
-        <div className="back-icon" onClick={() => navigate('/')}>
+        <div className="back-icon" data-tooltip-id="dashboardTooltip" onClick={() => navigate('/DashboardScreen')}>
           <HomeIcon />
+          <Tooltip id="dashboardTooltip" place="bottom-end" effect="solid">
+            Dashboard
+          </Tooltip>
+        </div>
+        <div className="logOut-icon" data-tooltip-id="logOutTooltip" onClick={handleLogout}>
+          <LogoutIcon />
+            <Tooltip id="logOutTooltip" place="bottom-end" effect="solid">
+            LogOut
+            </Tooltip>
         </div>
       </div>
       <div className="table-screen">
