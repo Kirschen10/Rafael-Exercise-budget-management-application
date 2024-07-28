@@ -5,16 +5,20 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addExpense } from '../actions/expenseActions';
 import { addIncome } from '../actions/incomeActions';
 import CloseIcon from '@mui/icons-material/Close';
-import '../css/AddExpense.css';
+import '../css/AddNewType.css';
 
-const AddExpense = () => {
+/**
+ * Component for adding a new income or expense.
+ */
+const AddNewType = () => {
+  // Initialize form handling
   const { register, handleSubmit, formState: { errors } } = useForm();
   const dispatch = useDispatch();
-
   const navigate = useNavigate();
-  const { type } = useParams();
+  const { type } = useParams(); // Determine if adding Income or Expense
   const username = useSelector(state => state.user.username);
 
+  // Function to handle form submission
   const onSubmit = (data) => {
     if (type === "Expense") {
       const expense = {
@@ -33,7 +37,7 @@ const AddExpense = () => {
       };
       dispatch(addIncome(username, income));
     }
-    navigate(-1);
+    navigate(-1); // Go back to the previous page
   };
 
   return (
@@ -93,7 +97,7 @@ const AddExpense = () => {
                     year >= 2000 && year <= 2030 &&
                     month >= 1 && month <= 12 &&
                     day >= 1 && day <= 31
-                  ) || "Date must be between 01-01-2020 and 31-12-2030";
+                  ) || "Date must be between 01-01-2000 and 31-12-2030";
                 }
               })} 
               id="date"
@@ -108,4 +112,4 @@ const AddExpense = () => {
   );
 };
 
-export default AddExpense;
+export default AddNewType;

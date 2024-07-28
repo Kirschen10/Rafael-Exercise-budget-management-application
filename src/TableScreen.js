@@ -12,16 +12,23 @@ import ArticleIcon from '@mui/icons-material/Article';
 import HomeIcon from '@mui/icons-material/Home';
 import { Tooltip } from 'react-tooltip';
 
+/**
+ * Main component for displaying and managing expenses and incomes.
+ */
 const TableScreen = () => {
   const dispatch = useDispatch();
+  
+  // Get state from the Redux store
   const expenses = useSelector(state => state.expenses);
   const incomes = useSelector(state => state.incomes);
   const username = useSelector(state => state.user.username);
 
+  // Local state for managing popup visibility and deletion ID
   const [showPopupExpense, setShowPopupExpense] = useState(false);
   const [showPopupIncome, setShowPopupIncome] = useState(false);
   const [deleteId, setDeleteId] = useState(null);
   
+  // Local state for filter and sort values
   const [expenseFilterValues, setExpenseFilterValues] = useState({ min: '', max: '' });
   const [incomeFilterValues, setIncomeFilterValues] = useState({ min: '', max: '' });
   const [expenseSortValues, setExpenseSortValues] = useState({ key: 'id', order: 'asc' });
@@ -29,11 +36,13 @@ const TableScreen = () => {
 
   const navigate = useNavigate();
 
+  // Fetch expenses and incomes 
   useEffect(() => {
     dispatch(fetchExpenses(username)); 
     dispatch(fetchIncomes(username)); 
   }, [dispatch, username]);
 
+  // Handle click on delete button
   const handleDeleteClick = (id, incomeOrExpense) => {
     setDeleteId(id);
     if (incomeOrExpense === "Expense") {
@@ -43,34 +52,41 @@ const TableScreen = () => {
     }
   };
 
+  // Confirm deletion of an expense
   const handleConfirmDeleteExpense = () => {
     dispatch(deleteExpense(deleteId));
     setShowPopupExpense(false);
   };
 
+  // Cancel deletion of an expense
   const handleCancelDeleteExpense = () => {
     setShowPopupExpense(false);
   };
 
+  // Confirm deletion of an income
   const handleConfirmDeleteIncome = () => {
     dispatch(deleteIncome(deleteId));
     setShowPopupIncome(false);
   };
 
+  // Cancel deletion of an income
   const handleCancelDeleteIncome = () => {
     setShowPopupIncome(false);
   };
 
+  // Filter expenses based on filter values
   const filteredExpenses = expenses.filter(expense => 
     (expenseFilterValues.min === '' || expense.amount >= expenseFilterValues.min) &&
     (expenseFilterValues.max === '' || expense.amount <= expenseFilterValues.max)
   );
 
+  // Filter incomes based on filter values
   const filteredIncomes = incomes.filter(income => 
     (incomeFilterValues.min === '' || income.amount >= incomeFilterValues.min) &&
     (incomeFilterValues.max === '' || income.amount <= incomeFilterValues.max)
   );
 
+  // Sort expenses based on sort values
   const sortedExpenses = [...filteredExpenses].sort((a, b) => {
     if (expenseSortValues.order === 'asc') {
       return a[expenseSortValues.key] > b[expenseSortValues.key] ? 1 : -1;
@@ -79,6 +95,7 @@ const TableScreen = () => {
     }
   });
 
+  // Sort incomes based on sort values
   const sortedIncomes = [...filteredIncomes].sort((a, b) => {
     if (incomeSortValues.order === 'asc') {
       return a[incomeSortValues.key] > b[incomeSortValues.key] ? 1 : -1;
@@ -89,12 +106,14 @@ const TableScreen = () => {
 
   return (
     <div className="TableScreenPage">
+      {/* Conditionally render the expense deletion popup */}
       {showPopupExpense && (
         <PopupDelete
           onConfirm={handleConfirmDeleteExpense}
           onCancel={handleCancelDeleteExpense}
         />
       )}
+      {/* Conditionally render the income deletion popup */}
       {showPopupIncome && (
         <PopupDelete
           onConfirm={handleConfirmDeleteIncome}
@@ -179,7 +198,7 @@ const TableScreen = () => {
                     <Tooltip id="editTooltipExpense" place="bottom-end" effect="solid">
                       Edit
                     </Tooltip>
-                    <button className="delete-button"data-tooltip-id="deleteTooltipExpense" onClick={() => handleDeleteClick(expense.id, "Expense")}><DeleteIcon /></button>
+                    <button className="delete-button" data-tooltip-id="deleteTooltipExpense" onClick={() => handleDeleteClick(expense.id, "Expense")}><DeleteIcon /></button>
                     <Tooltip id="deleteTooltipExpense" place="bottom-end" effect="solid">
                       Delete
                     </Tooltip>

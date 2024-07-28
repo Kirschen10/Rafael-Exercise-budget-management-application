@@ -8,7 +8,7 @@ import DashboardScreen from './DashboardScreen';
 import TableScreen from './TableScreen';
 import Details from './components/Details';
 import EditDetails from './components/EditDetails';
-import AddExpense from './components/AddExpense';
+import AddNewType from './components/AddNewType';
 
 function App() {
   const dispatch = useDispatch();
@@ -29,7 +29,7 @@ function App() {
         <Route path="TableScreen/*" element={<TableScreen />}>
           <Route path=":type/:id" element={<Details />} />
           <Route path="edit/:type/:id" element={<EditDetails />} />
-          <Route path="add/:type" element={<AddExpense />} />
+          <Route path="add/:type" element={<AddNewType />} />
         </Route>
       </Routes>
     </Router>
